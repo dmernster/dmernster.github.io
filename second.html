@@ -1,16 +1,25 @@
 <html lang="en" dir="ltr">
   <body>
-    <p id="text" style="font-size:10vw">
-      I still don't know what I'm doing.
+    <p id="one" style="font-size:6vw">
+      I still 
+    </p>
+    <p id="one" style="font-size:6vw">
+      don't know what 
+    </p>
+    <p id="one" style="font-size:6vw">
+      I'm doing.
     </p>
     
     <script>
       let colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
       let index = 0;
-      let text = document.getElementById("text");
-
+      let text = document.getElementById("one");
+      let text = document.getElementById("two");
+      let text = document.getElementById("three");
       setInterval(function() {
-      text.style.color = colors[index];
+      one.style.color = colors[index];
+      one.style.color = colors[index + 1]%colors.length;
+      one.style.color = colors[index+2]%colors.length;
       index = (index + 1) % colors.length;
       }, 1000);
     </script>
