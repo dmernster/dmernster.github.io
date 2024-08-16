@@ -1,14 +1,14 @@
 <html lang="en" dir="ltr">
   <body>
-    <p id="one" style="font-size:6vw">
+    <span id="one" style="font-size:6vw">
       I still 
-    </p>
-    <p id="two" style="font-size:6vw">
+    </span>
+    <span id="two" style="font-size:6vw">
       don't know what 
-    </p>
-    <p id="three" style="font-size:6vw">
+    </span>
+    <span id="three" style="font-size:6vw">
       I'm doing.
-    </p>
+    </span>
     
     <script>
       let colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
@@ -18,8 +18,8 @@
       let three = document.getElementById("three");
       setInterval(function() {
       one.style.color = colors[index];
-      two.style.color = colors[index + 1]%colors.length;
-      three.style.color = colors[index+2]%colors.length;
+      two.style.color = colors[(index + 1)%colors.length];
+      three.style.color = colors[(index+2)%colors.length];
       index = (index + 1) % colors.length;
       }, 1000);
     </script>
