@@ -18,8 +18,8 @@
       let text = document.getElementById("three");
       setInterval(function() {
       one.style.color = colors[index];
-      one.style.color = colors[index + 1]%colors.length;
-      one.style.color = colors[index+2]%colors.length;
+      two.style.color = colors[index + 1]%colors.length;
+      three.style.color = colors[index+2]%colors.length;
       index = (index + 1) % colors.length;
       }, 1000);
     </script>
