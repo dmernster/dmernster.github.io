@@ -30,7 +30,8 @@
         }
         function gs(o,t,v)
         {
-          var x=(o+t*v)%512;
+          var x=(o+t*v);
+          x=((x%512)+512)%512;
           if(x>=256)
           {
             x=512-x;
