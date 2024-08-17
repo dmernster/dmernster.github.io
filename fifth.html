@@ -1,1 +1,51 @@
-aaaa
+<html>
+  <body style="background-color: #000000;">
+    <canvas id="theCanvas"></canvas>
+      <script>
+        var can=document.getElementById("theCanvas");
+        can.width=750;
+        can.height=750;
+        var tick=0;
+        function gb(o,t,v)
+        {
+          var x=(o+t*v)%512;
+          if(x>=256)
+          {
+            x=512-x;
+          }
+          return x;
+        }
+        function gg(r,c,t,v)
+        {
+          if(r>25)
+          {
+            r=50-r;
+          }
+          if(c>25)
+          {
+            c=50-c;
+          }
+          x=gb((r+c)*15,tick,5);
+          return x;
+        }
+        function myTick()
+        {
+          tick++;
+          var c=can.getContext("2d");
+          var d=50;
+          //var s=tick%14+1;
+          var s=15;
+          for(var i=0; i<d; i++)
+          {
+            for(var j=0; j<d; j++)
+            {
+              c.fillStyle=`rgb(${gb(j*5,tick,25)},${gg(i,j,tick,20)},${gb(i*5,tick,10)})`;
+              c.fillRect(s*i,s*j,s,s);
+            }
+          }
+        }
+        setInterval(myTick,200);
+        
+      </script>
+  </body>     
+</html>
