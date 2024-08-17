@@ -6,6 +6,14 @@
         can.width=750;
         can.height=750;
         var tick=0;
+        function gb(o,t,v)
+        {
+          var x=(o+t*v)%512;
+          if(x>=256)
+          {
+            x=512-x;
+          }
+        }
         function myTick()
         {
           tick++;
@@ -17,7 +25,7 @@
           {
             for(var j=0; j<d; j++)
             {
-              c.fillStyle=`rgb(${(j*5+tick*25)%256},0,${(i*5+tick*10)%256})`;
+              c.fillStyle=`rgb(${gb(j*5,tick,25},0,${gb(i*5,tick,10)})`;
               c.fillRect(s*i,s*j,s,s);
             }
           }
