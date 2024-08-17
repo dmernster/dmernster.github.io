@@ -17,6 +17,11 @@
         }
         function gg(r,c,t,v)
         {
+          if(r>25)
+          {
+            r=50-r;
+            c=50-c;
+          }
           x=gb((r+c)*15,tick,5);
           return x;
         }
