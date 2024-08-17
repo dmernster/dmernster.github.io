@@ -59,7 +59,14 @@
         }
         function myTick()
         {
-          tick++;
+          if(document.getElementById('revc').checked)
+          {
+            tick--;
+          }
+          else
+          {
+            tick++;
+          }
           var c=can.getContext("2d");
           var d=50;
           var s=15;
