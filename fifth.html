@@ -17,6 +17,17 @@
             return 0;
           }
         }
+        function gr(o,t,v)
+        {
+          if(document.getElementById('rc').checked)
+          {
+            return gs(o,t,v);
+          }
+          else
+          {
+            return 0;
+          }
+        }
         function gs(o,t,v)
         {
           var x=(o+t*v)%512;
@@ -28,29 +39,35 @@
         }
         function gg(r,c,t,v)
         {
-          if(r>25)
+          if(document.getElementById('rc').checked)
           {
-            r=50-r;
+            if(r>25)
+            {
+              r=50-r;
+            }
+            if(c>25)
+            {
+              c=50-c;
+            }
+            x=gs((r+c)*15,tick,5);
+            return x;
           }
-          if(c>25)
+          else
           {
-            c=50-c;
+            return 0;
           }
-          x=gs((r+c)*15,tick,5);
-          return x;
         }
         function myTick()
         {
           tick++;
           var c=can.getContext("2d");
           var d=50;
-          //var s=tick%14+1;
           var s=15;
           for(var i=0; i<d; i++)
           {
             for(var j=0; j<d; j++)
             {
-              c.fillStyle=`rgb(${gs(j*5,tick,25)},${gg(i,j,tick,20)},${gb(i*5,tick,10)})`;
+              c.fillStyle=`rgb(${gr(j*5,tick,25)},${gg(i,j,tick,20)},${gb(i*5,tick,10)})`;
               c.fillRect(s*i,s*j,s,s);
             }
           }
