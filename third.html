@@ -3,19 +3,19 @@
     <canvas id="theCanvas"></canvas>
       <script>
         var can=document.getElementById("theCanvas");
+        can.width=500;
+        can.height=500;
         var c=can.getContext("2d");
-        var d=25;
+        var d=50;
         var s=10;
         for(var i=0; i<d; i++)
         {
           for(var j=0; j<d; j++)
           {
-            c.fillStyle=`rgb(${j*10},0,${i*10})`;
-            //c.fillStyle="rgb(255,0,128)";
+            c.fillStyle=`rgb(${j*5},0,${i*5})`;
             c.fillRect(s*i,s*j,s,s);
           }
         }
-        //c.fillRect(0,0,10,10);
       </script>
   </body>     
 </html>
