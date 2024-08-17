@@ -4,7 +4,17 @@
       <script>
         var can=document.getElementById("theCanvas");
         var c=can.getContext("2d");
-        c.fillRect(0,0,10,10);
+        var d=25;
+        var s=10;
+        for(var i=0; i<d; i++)
+        {
+          for(var j=0; j<d; j++)
+          {
+            c.fillStyle="rgb(j*255/d,0,i*255/d)";
+            c.fillRect(s*i,s*j,s,s);
+          }
+        }
+        //c.fillRect(0,0,10,10);
       </script>
   </body>     
 </html>
