@@ -15,6 +15,11 @@
           }
           return x;
         }
+        function gg(r,c,t,v)
+        {
+          x=gb((r+c)*15,tick,5);
+          return x;
+        }
         function myTick()
         {
           tick++;
@@ -27,7 +32,7 @@
             for(var j=0; j<d; j++)
             {
               //c.fillStyle=`rgb(${gb(j*5,tick,25)},0,${gb(i*5,tick,10)})`;
-              c.fillStyle=`rgb(0,${gb((j+i)*15,tick,5)},0)`;
+              c.fillStyle=`rgb(0,${gg(i,j,tick,20)},0)`;
               c.fillRect(s*i,s*j,s,s);
             }
           }
