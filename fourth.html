@@ -8,10 +8,10 @@
         var tick=0;
         function myTick()
         {
-          tick=tick+1;
+          tick++;
           var c=can.getContext("2d");
           var d=50;
-          var s=15;
+          var s=tick%14+1;
           for(var i=0; i<d; i++)
           {
             for(var j=0; j<d; j++)
