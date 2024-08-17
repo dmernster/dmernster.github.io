@@ -5,8 +5,10 @@
         var can=document.getElementById("theCanvas");
         can.width=750;
         can.height=750;
+        var tick=0;
         function myTick()
         {
+          tick=tick+1;
           var c=can.getContext("2d");
           var d=50;
           var s=15;
@@ -19,6 +21,7 @@
             }
           }
         }
+        
         
       </script>
   </body>     
