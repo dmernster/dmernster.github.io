@@ -11,12 +11,13 @@
           tick++;
           var c=can.getContext("2d");
           var d=50;
-          var s=tick%14+1;
+          //var s=tick%14+1;
+          var s=15;
           for(var i=0; i<d; i++)
           {
             for(var j=0; j<d; j++)
             {
-              c.fillStyle=`rgb(${j*5},0,${i*5})`;
+              c.fillStyle=`rgb(${(j*5+tick*25)%256},0,${(i*5+tick*10)%256})`;
               c.fillRect(s*i,s*j,s,s);
             }
           }
