@@ -9,14 +9,11 @@
       var ctx=can.getContext("2d");
       const gradient = ctx.createLinearGradient(20, 0, 220, 0);
 
-// Add three color stops
-gradient.addColorStop(0, "green");
-gradient.addColorStop(0.5, "cyan");
-gradient.addColorStop(1, "green");
+      gradient.addColorStop(0, "green");
+      gradient.addColorStop(1, "red");
 
-// Set the fill style and draw a rectangle
-ctx.fillStyle = gradient;
-ctx.fillRect(20, 20, 200, 100);
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0,0,256,256);
           
       </script>
       <br>
