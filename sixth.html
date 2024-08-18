@@ -9,12 +9,11 @@
       var ctx=can.getContext("2d");
       var gradient = ctx.createLinearGradient(0, 0, 0, 256);
 
-      gradient.addColorStop(0, "red");
-      gradient.addColorStop(1, "green");
+      gradient.addColorStop(0, "#ff0000");
+      gradient.addColorStop(1, "#00ff00");
 
       ctx.fillStyle = gradient;
       ctx.fillRect(0,0,256,256);
-      alert('Here1');
       
       function myButtonFunction()
       {
@@ -31,7 +30,6 @@
 
         ctx.fillStyle = gradient;
         ctx.fillRect(0,0,256,256);
-        alert('Here2');
       }
       
       </script>
