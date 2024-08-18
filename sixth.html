@@ -19,8 +19,14 @@
       {
         const gradient = ctx.createLinearGradient(0, 0, 0, 256);
 
-        gradient.addColorStop(0, "blue");
-        gradient.addColorStop(1, "purple");
+        const cs1 = document.getElementById('c1');
+        const color1 = cs1.value;
+
+        const cs2 = document.getElementById('c2');
+        const color2 = cs2.value;
+
+        gradient.addColorStop(0, cs1);
+        gradient.addColorStop(1, cs2);
 
         ctx.fillStyle = gradient;
         ctx.fillRect(0,0,256,256);
