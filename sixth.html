@@ -7,7 +7,7 @@
         can.height=256;
         
       var ctx=can.getContext("2d");
-      const gradient = ctx.createLinearGradient(0, 0, 0, 256);
+      var gradient = ctx.createLinearGradient(0, 0, 0, 256);
 
       gradient.addColorStop(0, "red");
       gradient.addColorStop(1, "green");
@@ -17,13 +17,13 @@
       
       function myButtonFunction()
       {
-        const gradient = ctx.createLinearGradient(0, 0, 0, 256);
+        var gradient = ctx.createLinearGradient(0, 0, 0, 256);
 
-        const cs1 = document.getElementById('c1');
-        const color1 = cs1.value;
+        var cs1 = document.getElementById('c1');
+        var color1 = cs1.value;
 
-        const cs2 = document.getElementById('c2');
-        const color2 = cs2.value;
+        var cs2 = document.getElementById('c2');
+        var color2 = cs2.value;
 
         gradient.addColorStop(0, cs1);
         gradient.addColorStop(1, cs2);
