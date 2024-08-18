@@ -14,7 +14,18 @@
 
       ctx.fillStyle = gradient;
       ctx.fillRect(0,0,256,256);
-          
+      
+      function myButtonFunction()
+      {
+        const gradient = ctx.createLinearGradient(0, 0, 0, 256);
+
+        gradient.addColorStop(0, "blue");
+        gradient.addColorStop(1, "purple");
+
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0,0,256,256);
+      }
+      
       </script>
       <br>
       <input type="color" id="c1" name="c2">
@@ -23,6 +34,6 @@
       <input type="color" id="c2" name="c2">
       <label for="favcolor">Color 2</label>
       <br>
-      <input type="button" onclick="alert('Hello World!')" value="Go">
+      <input type="button" onclick="myButtonFunction()" value="Go">
   </body>     
 </html>
