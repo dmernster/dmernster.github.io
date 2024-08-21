@@ -18,26 +18,49 @@
         ctx2.fillStyle = '#ffffff';
         ctx2.fillRect(10,20,10,10);
         
+        // Function to get the color of a pixel at (x, y)
+        function getPixelFlip(x, y)
+        {
+          // Check if the coordinates are within the bitmap's bounds
+          if (x < 0 || x >= width || y < 0 || y >= height)
+          {
+            return null;
+          }
+
+          // Get the pixel data from the canvas
+          const pixelData = ctx.getImageData(x, y, 1, 1).data;
+
+          // Return the color of the pixel as a string in the format '#rrggbb'
+          return pixelData[0]!=0 || pixelData[1]!=0 || pixelData[2]!=0;
+        }
+        
         var can=document.getElementById("theCanvas");
         can.width=750;
         can.height=750;
         var tick=0;
-        function gb(o,t,v)
+        function gb(r,c,t,v)
         {
           if(document.getElementById('bc').checked)
           {
-            return gs(o,t,v);
+            if(getPixelFlip(c,r))
+            {
+              return 255-gs(r*5,t,v);
+            }
+            else
+            {
+             return gs(r*5,t,v);
+            }
           }
           else
           {
             return 0;
           }
         }
-        function gr(o,t,v)
+        function gr(r,c,t,v)
         {
           if(document.getElementById('rc').checked)
           {
-            return gs(o,t,v);
+            return gs(c*5,t,v);
           }
           else
           {
@@ -91,7 +114,7 @@
           {
             for(var j=0; j<d; j++)
             {
-              c.fillStyle=`rgb(${gr(j*5,tick,25)},${gg(i,j,tick,20)},${gb(i*5,tick,10)})`;
+              c.fillStyle=`rgb(${gr(i,j,tick,25)},${gg(i,j,tick,20)},${gb(i,j,tick,10)})`;
               c.fillRect(s*i,s*j,s,s);
             }
           }
