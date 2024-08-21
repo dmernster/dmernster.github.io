@@ -21,14 +21,8 @@
         // Function to get the color of a pixel at (x, y)
         function getPixelFlip(x, y)
         {
-          // Check if the coordinates are within the bitmap's bounds
-          if (x < 0 || x >= width || y < 0 || y >= height)
-          {
-            return null;
-          }
-
           // Get the pixel data from the canvas
-          const pixelData = ctx.getImageData(x, y, 1, 1).data;
+          const pixelData = ctx2.getImageData(x, y, 1, 1).data;
 
           // Return the color of the pixel as a string in the format '#rrggbb'
           return (pixelData[0]!=0 || pixelData[1]!=0 || pixelData[2]!=0);
