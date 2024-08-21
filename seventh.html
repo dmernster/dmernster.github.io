@@ -60,7 +60,14 @@
         {
           if(document.getElementById('rc').checked)
           {
-            return gs(c*5,t,v);
+            if(getPixelFlip(c,r))
+            {
+              return 255-gs(c*5,t,v);
+            }
+            else
+            {
+              return gs(c*5,t,v);
+            }
           }
           else
           {
