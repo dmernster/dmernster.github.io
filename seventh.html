@@ -31,7 +31,7 @@
           const pixelData = ctx.getImageData(x, y, 1, 1).data;
 
           // Return the color of the pixel as a string in the format '#rrggbb'
-          return pixelData[0]!=0 || pixelData[1]!=0 || pixelData[2]!=0;
+          return (pixelData[0]!=0 || pixelData[1]!=0 || pixelData[2]!=0);
         }
         
         var can=document.getElementById("theCanvas");
