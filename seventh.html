@@ -32,17 +32,17 @@
         can.width=750;
         can.height=750;
         var tick=0;
-        function gb(r,c,t,v)
+        function gb(x,y,t,v)
         {
           if(document.getElementById('bc').checked)
           {
-            if(getPixelFlip(c,r))
+            if(getPixelFlip(x,y))
             {
-              return 255-gs(r*5,t,v);
+              return 255-gs(x*5,t,v);
             }
             else
             {
-             return gs(r*5,t,v);
+             return gs(x*5,t,v);
             }
           }
           else
@@ -50,17 +50,17 @@
             return 0;
           }
         }
-        function gr(r,c,t,v)
+        function gr(x,y,t,v)
         {
           if(document.getElementById('rc').checked)
           {
-            if(getPixelFlip(c,r))
+            if(getPixelFlip(x,y))
             {
-              return 255-gs(c*5,t,v);
+              return 255-gs(y*5,t,v);
             }
             else
             {
-              return gs(c*5,t,v);
+              return gs(y*5,t,v);
             }
           }
           else
