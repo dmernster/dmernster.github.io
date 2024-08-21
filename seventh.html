@@ -2,6 +2,18 @@
   <body style="background-color: #000000;">
     <canvas id="theCanvas"></canvas>
       <script>
+        // Create a canvas element
+        var canvas2 = document.createElement('canvas');
+        canvas2.width = 50;
+        canvas2.height = 50;
+
+        // Get the drawing context
+        var ctx2 = canvas2.getContext('2d');
+
+        // Then you can do stuff, e.g.:
+        ctx2.fillStyle = '#f00';
+        ctx2.fillRect(20,10,20,20);
+      
         var can=document.getElementById("theCanvas");
         can.width=750;
         can.height=750;
