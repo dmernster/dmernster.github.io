@@ -1,1 +1,96 @@
-cccccccc
+<html>
+  <body style="background-color: #000000;">
+    <canvas id="theCanvas"></canvas>
+      <script>
+        var can=document.getElementById("theCanvas");
+        can.width=750;
+        can.height=750;
+        var tick=0;
+        function gb(o,t,v)
+        {
+          if(document.getElementById('bc').checked)
+          {
+            return gs(o,t,v);
+          }
+          else
+          {
+            return 0;
+          }
+        }
+        function gr(o,t,v)
+        {
+          if(document.getElementById('rc').checked)
+          {
+            return gs(o,t,v);
+          }
+          else
+          {
+            return 0;
+          }
+        }
+        function gs(o,t,v)
+        {
+          var x=(o+t*v);
+          x=((x%512)+512)%512;
+          if(x>=256)
+          {
+            x=512-x;
+          }
+          return x;
+        }
+        function gg(r,c,t,v)
+        {
+          if(document.getElementById('gc').checked)
+          {
+            if(r>25)
+            {
+              r=50-r;
+            }
+            if(c>25)
+            {
+              c=50-c;
+            }
+            x=gs((r+c)*15,tick,5);
+            return x;
+          }
+          else
+          {
+            return 0;
+          }
+        }
+        function myTick()
+        {
+          if(document.getElementById('revc').checked)
+          {
+            tick--;
+          }
+          else
+          {
+            tick++;
+          }
+          var c=can.getContext("2d");
+          var d=50;
+          var s=15;
+          for(var i=0; i<d; i++)
+          {
+            for(var j=0; j<d; j++)
+            {
+              c.fillStyle=`rgb(${gr(j*5,tick,25)},${gg(i,j,tick,20)},${gb(i*5,tick,10)})`;
+              c.fillRect(s*i,s*j,s,s);
+            }
+          }
+        }
+        setInterval(myTick,200);
+        
+      </script>
+      <br>
+      <input type="checkbox" id="rc" name="rc" value="RedOn" style="height: 40px; width: 40px;" checked>
+      <label for="rc" style="color: red; font-size: 40px">Red</label><br>
+      <input type="checkbox" id="gc" name="gc" value="GreenOn" style="height: 40px; width: 40px;" checked>
+      <label for="gc" style="color: green; font-size: 40px">Green</label><br>
+      <input type="checkbox" id="bc" name="bc" value="BlueOn" style="height: 40px; width: 40px;" checked>
+      <label for="bc" style="color: blue; font-size: 40px">Blue</label><br>
+      <input type="checkbox" id="revc" name="revc" value="ReverseOn" style="height: 40px; width: 40px;">
+      <label for="revc" style="color: yellow; font-size: 40px">Reverse</label><br>
+  </body>     
+</html>
