@@ -81,8 +81,10 @@
           }
           return x;
         }
-        function gg(r,c,t,v)
+        function gg(x,y,t,v)
         {
+          let r=x;
+          let c=y;
           if(document.getElementById('gc').checked)
           {
             if(r>25)
@@ -93,14 +95,14 @@
             {
               c=50-c;
             }
-            x=gs((r+c)*15,tick,5);
-            if(false)//getPixelFlip(r,c))
+            z=gs((r+c)*15,tick,5);
+            if(getPixelFlip(x,y))
             {
-              return 255-x;
+              return 255-z;
             }
             else
             {
-              return x;
+              return z;
             }
           }
           else
