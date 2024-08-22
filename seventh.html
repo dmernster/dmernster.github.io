@@ -94,7 +94,14 @@
               c=50-c;
             }
             x=gs((r+c)*15,tick,5);
-            return x;
+            if(getPixelFlip(r,c))
+            {
+              return 255-x;
+            }
+            else
+            {
+              return x;
+            }
           }
           else
           {
