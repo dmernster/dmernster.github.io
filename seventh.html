@@ -11,14 +11,22 @@
         // Get the drawing context
         var ctx2 = canvas2.getContext('2d');
 
-        // Then you can do stuff, e.g.:
-        ctx2.fillStyle = '#000000';
-        ctx2.fillRect(0,0,50,50);
+        // Load the bitmap
+        const bitmap = new Image();
+        bitmap.src = 'mayra.bmp';
+
+        // Draw the bitmap on the canvas
+        bitmap.onload = function() 
+        {
+           ctx2.drawImage(bitmap, 0, 0);
+        };
+
+        //ctx2.fillStyle = '#000000';
+        //ctx2.fillRect(0,0,50,50);
         
-        ctx2.fillStyle = '#ffffff';
-        //ctx2.fillRect(10,20,10,10);
-        ctx2.font = "14px helvetica";
-        ctx2.fillText("MAYRA", 0, 31);
+        //ctx2.fillStyle = '#ffffff';
+        //ctx2.font = "14px helvetica";
+        //ctx2.fillText("MAYRA", 0, 31);
         
         // Function to get the color of a pixel at (x, y)
         function getPixelFlip(x, y)
