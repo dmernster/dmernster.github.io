@@ -9,7 +9,7 @@
         canvas2.height = 50;
 
         // Get the drawing context
-        var ctx2 = canvas2.getContext('2d');
+        var ctx2 = canvas2.getContext('2d',{ willReadFrequently: true });
 
         // Load the bitmap
         const bitmap = new Image();
