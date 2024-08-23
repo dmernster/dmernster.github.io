@@ -22,8 +22,29 @@
         };
         
         // Function to get the color of a pixel at (x, y)
-        function getPixelFlip(x, y)
+        function getPixelFlip(x, y, c)
         {
+          if(c==1)
+          {
+            if(document.getElementById('rtc').checked)
+           {
+              return;
+            }
+          }
+          if(c==2)
+          {
+            if(document.getElementById('gtc').checked)
+           {
+              return;
+            }
+          }
+          if(c==3)
+          {
+            if(document.getElementById('btc').checked)
+           {
+              return;
+            }
+          }
           // Get the pixel data from the canvas
           const pixelData = ctx2.getImageData(x, y, 1, 1).data;
           return (pixelData[0]>100 || pixelData[1]>100 || pixelData[2]>100);
@@ -37,7 +58,7 @@
         {
           if(document.getElementById('bc').checked)
           {
-            if(getPixelFlip(x,y))
+            if(getPixelFlip(x,y,3))
             {
               return 255-gs(x*5,t,v);
             }
@@ -55,7 +76,7 @@
         {
           if(document.getElementById('rc').checked)
           {
-            if(getPixelFlip(x,y))
+            if(getPixelFlip(x,y,1))
             {
               return 255-gs(y*5,t,v);
             }
@@ -94,7 +115,7 @@
               c=50-c;
             }
             z=gs((r+c)*15,tick,5);
-            if(getPixelFlip(x,y))
+            if(getPixelFlip(x,y,2))
             {
               return 255-z;
             }
@@ -142,5 +163,11 @@
       <label for="bc" style="color: blue; font-size: 40px">Blue</label><br>
       <input type="checkbox" id="revc" name="revc" value="ReverseOn" style="height: 40px; width: 40px;">
       <label for="revc" style="color: yellow; font-size: 40px">Reverse</label><br>
+      <input type="checkbox" id="rtc" name="rtc" value="RedTextOn" style="height: 40px; width: 40px;" checked>
+      <label for="rtc" style="color: red; font-size: 40px">Red Text</label><br>
+      <input type="checkbox" id="gtc" name="gtc" value="GreenTextOn" style="height: 40px; width: 40px;" checked>
+      <label for="gtc" style="color: green; font-size: 40px">Green Text</label><br>
+      <input type="checkbox" id="btc" name="btc" value="BlueTextOn" style="height: 40px; width: 40px;" checked>
+      <label for="btc" style="color: blue; font-size: 40px">Blue Text</label><br>
   </body>     
 </html>
