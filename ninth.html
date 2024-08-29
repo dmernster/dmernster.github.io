@@ -1,7 +1,7 @@
 <html>
   <body style="background-color: #000000;">
     <canvas id="canvas"></canvas>
-      <script>
+    <script>
 // Get the canvas element
 const canvas = document.getElementById('canvas');
 const gl = canvas.getContext('webgl');
@@ -98,3 +98,6 @@ gl.uniformMatrix4fv(modelViewUniformLocation, false, modelViewMatrix);
 gl.clearColor(0.0, 0.0, 0.0, 1.0);
 gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
+    </script>
+  </body>
+</html>
