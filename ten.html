@@ -2,6 +2,17 @@
   <body>
     <canvas id="theCanvas"></canvas>
       <script>
+        class Cell
+        {
+          constructor(id) 
+          {
+            this.id = id;
+            this.up = false;
+            this.down = false;
+            this.left = false;
+            this.right = false;
+          }
+        }
         var can=document.getElementById("theCanvas");
         can.width=750;
         can.height=750;
