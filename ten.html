@@ -13,6 +13,13 @@
             this.left = false;
             this.right = false;
           }
+          
+          draw(ctx)
+          {
+            c.fillStyle=`rgb(,0,${i*5})`;
+            c.fillRect(s*i,s*j,s,s);
+          }
+            
         }
         var can=document.getElementById("theCanvas");
         can.width=750;
