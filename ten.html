@@ -2,6 +2,7 @@
   <body>
     <canvas id="theCanvas"></canvas>
       <script>
+        const l = 10;
         class Cell
         {
           constructor(x,y) 
@@ -17,24 +18,17 @@
           draw(ctx)
           {
             ctx.fillStyle=`rgb(255,0,255)`;
-            ctx.fillRect(s*i,s*j,s,s);
+            ctx.fillRect(x*l,y*l,l,l);
           }
-            
         }
         var can=document.getElementById("theCanvas");
         can.width=750;
         can.height=750;
         var c=can.getContext("2d");
-        var d=50;
-        var s=15;
-        for(var i=0; i<d; i++)
-        {
-          for(var j=0; j<d; j++)
-          {
-            c.fillStyle=`rgb(${j*5},0,${i*5})`;
-            c.fillRect(s*i,s*j,s,s);
-          }
-        }
+        
+        Cell MyCell(6,4);
+        MyCell.draw(c);
+        
       </script>
   </body>     
 </html>
