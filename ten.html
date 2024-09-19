@@ -27,6 +27,18 @@
             {
               ctx.fillRect(this.x*l+w, this.y*l,3*w,w);
             }
+            if(!this.down)
+            {
+              ctx.fillRect(this.x*l+w, this.y*l+4*w,3*w,w);
+            }
+            if(!this.right)
+            {
+              ctx.fillRect(this.x*l+4*w, this.y*l+w,w,3*w);
+            }
+            if(!this.left)
+            {
+              ctx.fillRect(this.x*l, this.y*l+w,w,3*w);
+            }
               
           }
         }
@@ -36,9 +48,12 @@
         var c=can.getContext("2d");
         
         const MyCell = new Cell(6,4);
+        MyCell.left=true;
+        MyCell.right=true;
         MyCell.draw(c);
         const AnotherCell = new Cell(8,4);
         AnotherCell.up = true;
+        AnotherCell.down = true;
         AnotherCell.draw(c);
         
       </script>
