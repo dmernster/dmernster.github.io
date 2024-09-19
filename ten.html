@@ -17,8 +17,9 @@
           
           draw(ctx)
           {
+            let w=l/5;
             ctx.fillStyle=`rgb(255,0,255)`;
-            ctx.fillRect(this.x*l,this.y*l,l,l);
+            ctx.fillRect(this.x*l,this.y*l,w,w);
           }
         }
         var can=document.getElementById("theCanvas");
