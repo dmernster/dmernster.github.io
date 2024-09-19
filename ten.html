@@ -25,7 +25,7 @@
             ctx.fillRect(this.x*l+4*w, this.y*l,w,w);
             if(!this.up)
             {
-              ctx.fillRect(this.x*l+w, this.y,3*w,w);
+              ctx.fillRect(this.x*l+w, this.y*l,3*w,w);
             }
               
           }
@@ -38,6 +38,7 @@
         const MyCell = new Cell(6,4);
         MyCell.draw(c);
         const AnotherCell = new Cell(8,4);
+        AnotherCell.up = true;
         AnotherCell.draw(c);
         
       </script>
