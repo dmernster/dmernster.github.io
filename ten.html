@@ -21,6 +21,8 @@
             ctx.fillStyle=`rgb(255,0,255)`;
             ctx.fillRect(this.x*l,this.y*l,w,w);
             ctx.fillRect(this.x*l+4*w, this.y*l+4*w,w,w);
+            ctx.fillRect(this.x*l, this.y*l+4*w,w,w);
+            ctx.fillRect(this.x*l+4*w, this.y*l,w,w);
           }
         }
         var can=document.getElementById("theCanvas");
