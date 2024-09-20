@@ -69,14 +69,16 @@
         can.height=750;
         var c=can.getContext("2d");
         
-        const MyCell = new Cell(6,4);
+        /*const MyCell = new Cell(6,4);
         MyCell.left=true;
         MyCell.right=true;
         MyCell.draw(c);
         const AnotherCell = new Cell(8,4);
         AnotherCell.up = true;
         AnotherCell.down = true;
-        AnotherCell.draw(c);
+        AnotherCell.draw(c);*/
+
+        maze.forEach((element)=>element.draw(c));
         
       </script>
   </body>     
