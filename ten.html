@@ -2,6 +2,8 @@
   <body style="background-color: #000000;">
     <canvas id="theCanvas"></canvas>
       <script>
+        const rows = 11;
+        const cols = 15;
         function shuffleArray(array)
         {
           for (let i = array.length - 1; i >= 0; i--)
@@ -54,9 +56,12 @@
           }
         }
         var maze;
-        for (let x=0; x < columns; x++)
+        for (let y=0; y < rows; y++)
         {
-          
+          for (let x=0; x < columns; x++)
+          {
+            maze.push(new Cell(x,y));
+          }
         }
           
         var can=document.getElementById("theCanvas");
