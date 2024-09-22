@@ -88,14 +88,16 @@
         //maze[1].draw(c);
 
         let start=getCell(rows/2,0);
+        start.full = true;
+        
 
         /*while()
         {
            
         }*/
 
-        let oneCell = getCell(6,3);
-        oneCell.up=true;
+        //let oneCell = getCell(6,3);
+        //oneCell.up=true;
 
         maze.forEach((element)=>element.draw(c));
         
