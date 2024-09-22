@@ -89,7 +89,26 @@
 
         let start=getCell(rows/2,0);
         start.full = true;
-        
+        let d = start.tries.pop();
+        if(d==4)
+        {
+          start.tries.pop();
+        }
+        if(d==1)
+        {
+          start.up = true;
+        }
+        else if (d==2)
+        {
+          start.right = true;
+        }
+        else if (d==3)
+        {
+          start.down = true;
+        }
+          
+          
+          
 
         /*while()
         {
