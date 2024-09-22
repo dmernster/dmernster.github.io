@@ -66,7 +66,7 @@
         
         getCell(x,y)
         {
-          
+          return maze[y*rows+columns];
         }
           
         var can=document.getElementById("theCanvas");
@@ -86,10 +86,13 @@
         //maze[0].draw(c);
         //maze[1].draw(c);
 
-        while()
+        /*while()
         {
            
-        }
+        }*/
+
+        let oneCell = getCell(6,3);
+        oneCell.up=true;
 
         maze.forEach((element)=>element.draw(c));
         
