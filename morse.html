@@ -1,2 +1,29 @@
-c
-c
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Letter Generator</title>
+	<style>
+        #letterDisplay {
+            color: pink;
+            font-size: 48px; /* Adjust size as needed */
+        }
+    </style>
+</head>
+<body>
+    <body style="background-color: #000000;">
+    <h1 id="letterDisplay">Click the button!</h1>
+    <button id="generateButton">Ameliana</button>
+
+    <script>
+	document.getElementById('generateButton').addEventListener('click', function() {
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const randomIndex = Math.floor(Math.random() * letters.length);
+    const randomLetter = letters[randomIndex];
+    
+    document.getElementById('letterDisplay').textContent = randomLetter;
+})
+	</script>
+</body>
+</html>
