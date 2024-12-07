@@ -22,7 +22,7 @@
     const morse = '.-   -... -.-. -..  .    ..-. --.  .... ..   .--- -.-  .-.. --   -.   ---  .--. --.- .-.  ...  -    ..-  ...- .--  -..- -.-- --..' 
     const randomIndex = Math.floor(Math.random() * letters.length);
     const randomLetter = letters[randomIndex];
-    const randomMorse = morse[randomIndex];
+    const randomMorse = morse[randomIndex*5];
     
     document.getElementById('letterDisplay').textContent = randomLetter;
     document.getElementById('morseDisplay').textContent = randomMorse;
