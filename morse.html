@@ -19,8 +19,10 @@
     <script>
 	document.getElementById('generateButton').addEventListener('click', function() {
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const morse = '.-   -... -.-. -..  .    ' 
     const randomIndex = Math.floor(Math.random() * letters.length);
     const randomLetter = letters[randomIndex];
+    const randomMorse = morse[randomIndex];
     
     document.getElementById('letterDisplay').textContent = randomLetter;
     document.getElementById('morseDisplay').textContent = randomMorse;
