@@ -17,12 +17,12 @@
     let pressStartTime;
 
     // When the button is pressed
-    button.addEventListener('mousedown', () => {
+    button.addEventListener('touchstart', () => {
       pressStartTime = Date.now(); // Record the time the button was pressed
     });
 
     // When the button is released
-    button.addEventListener('mouseup', () => {
+    button.addEventListener('touchend', () => {
       if (pressStartTime) {
         const pressDuration = Date.now() - pressStartTime; // Calculate the duration
         output.textContent = `Button was pressed for ${pressDuration} milliseconds.`;
