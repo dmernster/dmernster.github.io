@@ -15,7 +15,7 @@
     <body style="background-color: #000000;">
     <h1 id="letterDisplay">Click the button!</h1>
     <button id="generateButton">Ameliana</button>
-
+    <h1 id="morseDisplay">Click the button!</h1>
     <script>
 	document.getElementById('generateButton').addEventListener('click', function() {
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -23,6 +23,7 @@
     const randomLetter = letters[randomIndex];
     
     document.getElementById('letterDisplay').textContent = randomLetter;
+    document.getElementById('morseDisplay').textContent = randomMorse;
 })
 	</script>
 </body>
