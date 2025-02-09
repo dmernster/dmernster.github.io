@@ -47,6 +47,9 @@
            {
               return;
             }
+            // Get the pixel data from the canvas
+            const pixelData = ctx2.getImageData(x, y, 1, 1).data;
+            return (pixelData[0]>100 || pixelData[1]>100 || pixelData[2]>100);
           }
           if(c==2)
           {
@@ -54,6 +57,7 @@
            {
               return;
             }
+            return true;
           }
           if(c==3)
           {
@@ -61,10 +65,10 @@
            {
               return;
             }
+            // Get the pixel data from the canvas
+            const pixelData = ctx3.getImageData(x, y, 1, 1).data;
+            return (pixelData[0]>100 || pixelData[1]>100 || pixelData[2]>100);
           }
-          // Get the pixel data from the canvas
-          const pixelData = ctx2.getImageData(x, y, 1, 1).data;
-          return (pixelData[0]>100 || pixelData[1]>100 || pixelData[2]>100);
         }
         
         var can=document.getElementById("theCanvas");
@@ -77,11 +81,11 @@
           {
             if(getPixelFlip(x,y,3))
             {
-              return 255-gs(x*5,t,v);
+              return gs(x*5,t,v);
             }
             else
             {
-             return gs(x*5,t,v);
+             return 0;
             }
           }
           else
@@ -95,11 +99,11 @@
           {
             if(getPixelFlip(x,y,1))
             {
-              return 255-gs(y*5,t,v);
+              return gs(y*5,t,v);
             }
             else
             {
-              return gs(y*5,t,v);
+              return 0;
             }
           }
           else
@@ -134,11 +138,11 @@
             z=gs((r+c)*15,tick,5);
             if(getPixelFlip(x,y,2))
             {
-              return 255-z;
+              return z;
             }
             else
             {
-              return z;
+              return 0;
             }
           }
           else
