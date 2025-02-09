@@ -165,29 +165,34 @@
       </script>
       <br>
       <span id="one" style="font-size:6vw">
-        I still 
+        Happy 
       </span>
       <span id="two" style="font-size:6vw">
-        don't know what 
+        Valentine's 
       </span>
       <span id="three" style="font-size:6vw">
-        I'm doing.
+        Day to my one 
       </span>
-
+      <span id="four" style="font-size:6vw">
+        and only Wife!
+      </span>
+    
       <script>
         let colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
         let index = 0;
         let one = document.getElementById("one");
         let two = document.getElementById("two");
         let three = document.getElementById("three");
+        let four = document.getElementById("four");
         setInterval(function() {
-        three.style.color = colors[index];
-        two.style.color = colors[(index + 1)%colors.length];
-        one.style.color = colors[(index+2)%colors.length];
+        four.style.color = colors[index];
+        three.style.color = colors[index + 1%colors.length];
+        two.style.color = colors[(index + 2)%colors.length];
+        one.style.color = colors[(index+3)%colors.length];
         index = (index + 1) % colors.length;
         }, 1000);
       </script>
-    
+      <br>
       <input type="checkbox" id="rc" name="rc" value="RedOn" style="height: 40px; width: 40px;" checked>
       <label for="rc" style="color: red; font-size: 40px">Red</label><br>
       <input type="checkbox" id="gc" name="gc" value="GreenOn" style="height: 40px; width: 40px;" checked>
