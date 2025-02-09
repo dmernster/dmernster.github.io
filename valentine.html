@@ -43,28 +43,16 @@
         {
           if(c==1)
           {
-            if(!document.getElementById('rtc').checked)
-           {
-              return;
-            }
             // Get the pixel data from the canvas
             const pixelData = ctx2.getImageData(x, y, 1, 1).data;
             return (pixelData[0]>100 || pixelData[1]>100 || pixelData[2]>100);
           }
           if(c==2)
           {
-            if(!document.getElementById('gtc').checked)
-           {
-              return;
-            }
             return true;
           }
           if(c==3)
           {
-            if(!document.getElementById('btc').checked)
-           {
-              return;
-            }
             // Get the pixel data from the canvas
             const pixelData = ctx3.getImageData(x, y, 1, 1).data;
             return (pixelData[0]>100 || pixelData[1]>100 || pixelData[2]>100);
