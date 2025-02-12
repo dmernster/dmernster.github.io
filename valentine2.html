@@ -61,7 +61,8 @@
         
         function changeToRed(x,y)
         {
-          if(x+y < 5)
+          let k=10;
+          if(x+y<k || 49-x+y<k || x+49-y<k || 98-x-y<k)
           {
             return true;
           }
