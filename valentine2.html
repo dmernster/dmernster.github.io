@@ -90,28 +90,7 @@
             return 0;
           }
         }
-        function gr(x,y,t,v)
-        {
-          if(changeToRed(x,y))
-          {
-            return gb(x,y,t,v);
-          }
-          if(document.getElementById('rc').checked)
-          {
-            if(getPixelFlip(x,y,1))
-            {
-              return gs(y*5,t,v);
-            }
-            else
-            {
-              return 0;
-            }
-          }
-          else
-          {
-            return 0;
-          }
-        }
+        
         function gs(o,t,v)
         {
           var x=(o+t*v);
@@ -140,6 +119,28 @@
             if(getPixelFlip(x,y,2))
             {
               return z;
+            }
+            else
+            {
+              return 0;
+            }
+          }
+          else
+          {
+            return 0;
+          }
+        }
+        function gr(x,y,t,v)
+        {
+          if(changeToRed(x,y))
+          {
+            return gb(x,y,t,v);
+          }
+          if(document.getElementById('rc').checked)
+          {
+            if(getPixelFlip(x,y,1))
+            {
+              return gs(y*5,t,v);
             }
             else
             {
