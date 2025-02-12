@@ -103,8 +103,8 @@
         }
         function gb(x,y,t,v)
         {
-          let r=x;
-          let c=y;
+          let r=y;
+          let c=x;
           if(document.getElementById('bc').checked)
           {
             if(r>25)
@@ -113,7 +113,7 @@
             }
             if(c>24)
             {
-              c=51-c;
+              c=50-c;
             }
             z=gs((r+c)*15,tick,5);
             if(getPixelFlip(x,y,2))
