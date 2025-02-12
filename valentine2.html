@@ -126,12 +126,12 @@
         }
         function gb2(x,y,t,v)
         {
-          if(changeToRed(x,y))
-          {
-            return 0;
-          }
           if(document.getElementById('bc').checked)
           {
+            if(changeToRed(x,y))
+            {
+              return gb(x,y,t,v)/2;
+            }
             return gb(x,y,t,v);
           }
           return 0;
