@@ -59,12 +59,25 @@
           }
         }
         
+        function changeToRed(x,y)
+        {
+          if(x+y < 5)
+          {
+            return true;
+          }
+        }
+          
+        
         var can=document.getElementById("theCanvas");
         can.width=750;
         can.height=750;
         var tick=0;
         function gg(x,y,t,v)
         {
+          if(changeToRed(x,y))
+          {
+            return gr(x,y,t,v)
+          }
           if(document.getElementById('gc').checked)
           {
             if(getPixelFlip(x,y,3))
