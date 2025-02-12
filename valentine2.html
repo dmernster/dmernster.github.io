@@ -106,8 +106,6 @@
         {
           let r=y;
           let c=x;
-          if(document.getElementById('bc').checked)
-          {
             if(r>24)
             {
               r=48-r;
@@ -125,11 +123,6 @@
             {
               return 0;
             }
-          }
-          else
-          {
-            return 0;
-          }
         }
         function gb2(x,y,t,v)
         {
@@ -137,16 +130,20 @@
           {
             return 0;
           }
-          return gb(x,y,t,v);
+          if(document.getElementById('bc').checked)
+          {
+            return gb(x,y,t,v);
+          }
+          return 0;
         }
         function gr(x,y,t,v)
         {
-          if(changeToRed(x,y))
-          {
-            return gb(x,y,t,v)/2;
-          }
           if(document.getElementById('rc').checked)
           {
+            if(changeToRed(x,y))
+            {
+              return gb(x,y,t,v)/2;
+            }
             if(getPixelFlip(x,y,1))
             {
               return gs(y*5,t,v);
