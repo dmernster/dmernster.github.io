@@ -66,7 +66,6 @@
             return true;
           }
         }
-          
         
         var can=document.getElementById("theCanvas");
         can.width=750;
@@ -74,12 +73,12 @@
         var tick=0;
         function gg(x,y,t,v)
         {
-          if(changeToRed(x,y))
-          {
-            return gr(x,y,t,v)
-          }
           if(document.getElementById('gc').checked)
           {
+            if(changeToRed(x,y))
+            {
+              return 0;
+            }
             if(getPixelFlip(x,y,3))
             {
               return gs(x*5,t,v);
@@ -96,6 +95,10 @@
         }
         function gr(x,y,t,v)
         {
+          if(changeToRed(x,y))
+          {
+            return gg(x,y,t,v);
+          }
           if(document.getElementById('rc').checked)
           {
             if(getPixelFlip(x,y,1))
