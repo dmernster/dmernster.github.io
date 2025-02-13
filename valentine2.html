@@ -61,9 +61,9 @@
         
         function changeToRed(x,y)
         {
-          const m1=1;
+          let m1=document.getElementById('mb1').value;
           const b1=1;
-          const m2=1;
+          let m2=m1;
           const b2=1;
           
           if(y>=m1*x+b1 && y<=m2*x+b2)
@@ -232,7 +232,7 @@
       <label for="bc" style="color: blue; font-size: 40px">Blue</label><br>
       <input type="checkbox" id="revc" name="revc" value="ReverseOn" style="height: 40px; width: 40px;">
       <label for="revc" style="color: yellow; font-size: 40px">Reverse</label><br>
-      <input type="text" id="mb1" name="mb1" value="mb1" style="height: 40px; width: 100px;">
-      <label for="mb1" style="color: yellow; font-size: 40px">M1</label><br>
+      <input type="text" id="mb1" name="mb1" value="1" style="height: 40px; width: 100px;">
+      <label for="mb1" style="color: purple; font-size: 40px">M1</label><br>
   </body>
 </html>
