@@ -75,6 +75,8 @@
           let v4=-m2*xx+b2;
           let v5=m2*xx-b2;
           let v6=m1*xx-b1;
+          let v7=-m2*xx-b2;
+          let v8=-m1*xx-b1;
           
           if(yy>=v1 && yy<=v2)
           {
@@ -87,6 +89,11 @@
           }
           
           if(yy>=v5 && yy<=v6)
+          {
+            return true;
+          }
+          
+          if(yy>=v7 && yy<=v8)
           {
             return true;
           }
