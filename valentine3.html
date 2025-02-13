@@ -1,1 +1,270 @@
-m
+<html>
+  <body style="background-color: #000000;">
+    <canvas id="theCanvas"></canvas>
+      <script>
+        // Create a canvas element
+        //var canvas2 = document.getElementById("theCanvas2");
+        var canvas2 = document.createElement('canvas');
+        canvas2.width = 50;
+        canvas2.height = 50;
+
+        // Get the drawing context
+        var ctx2 = canvas2.getContext('2d',{ willReadFrequently: true });
+
+        // Load the bitmap
+        const bitmap = new Image();
+        bitmap.src = 'loveheart.bmp';
+
+        // Draw the bitmap on the canvas
+        bitmap.onload = function() 
+        {
+           ctx2.drawImage(bitmap, 0, 0);
+        };
+        
+        var canvas3 = document.createElement('canvas');
+        canvas3.width = 50;
+        canvas3.height = 50;
+
+        // Get the drawing context
+        var ctx3 = canvas3.getContext('2d',{ willReadFrequently: true });
+
+        // Load the bitmap
+        const bitmap2 = new Image();
+        bitmap2.src = 'mayra2.bmp';
+
+        // Draw the bitmap on the canvas
+        bitmap2.onload = function() 
+        {
+           ctx3.drawImage(bitmap2, 0, 0);
+        };
+        
+        // Function to get the color of a pixel at (x, y)
+        function getPixelFlip(x, y, c)
+        {
+          if(c==1)
+          {
+            // Get the pixel data from the canvas
+            const pixelData = ctx2.getImageData(x, y, 1, 1).data;
+            return (pixelData[0]>100 || pixelData[1]>100 || pixelData[2]>100);
+          }
+          if(c==2)
+          {
+            return true;
+          }
+          if(c==3)
+          {
+            // Get the pixel data from the canvas
+            const pixelData = ctx3.getImageData(x, y, 1, 1).data;
+            return (pixelData[0]>100 || pixelData[1]>100 || pixelData[2]>100);
+          }
+        }
+        
+        function changeToRed(x,y)
+        {
+          let m1=Number(document.getElementById('mb1').value);
+          let b1=Number(document.getElementById('bb1').value);
+          let m2=Number(document.getElementById('mb2').value);
+          let b2=Number(document.getElementById('bb2').value);
+          
+          let xx=x-24.5;
+          let yy=24.5-y;
+          
+          let v1=m1*xx+b1;
+          let v2=m2*xx+b2;
+          
+          if(x==document.getElementById('xx').value
+                && y==document.getElementById('yy').value)
+          {
+            document.getElementById('zz').value=v1;
+          }
+          
+          if(yy>=v1 && yy<=v2)
+          {
+            return true;
+          }
+          
+          //let k=13;
+          //if(x+y<k || 49-x+y<k || x+49-y<k || 98-x-y<k)
+          //{
+          //  return true;
+          //}
+          return false;
+        }
+        
+        var can=document.getElementById("theCanvas");
+        can.width=750;
+        can.height=750;
+        var tick=0;
+        function gg(x,y,t,v)
+        {
+          if(document.getElementById('gc').checked)
+          {
+            if(getPixelFlip(x,y,3))
+            {
+              return gs(x*5,t,v);
+            }
+            else
+            {
+             return 0;
+            }
+          }
+          else
+          {
+            return 0;
+          }
+        }
+        
+        function gs(o,t,v)
+        {
+          var x=(o+t*v);
+          x=((x%512)+512)%512;
+          if(x>=256)
+          {
+            x=512-x;
+          }
+          return x;
+        }
+        function gb(x,y,t,v)
+        {
+          let r=y;
+          let c=x;
+            if(r>24)
+            {
+              r=48-r;
+            }
+            if(c>24)
+            {
+              c=48-c;
+            }
+            z=gs((r+c)*15,tick,5);
+            if(getPixelFlip(x,y,2))
+            {
+              return z;
+            }
+            else
+            {
+              return 0;
+            }
+        }
+        function gb2(x,y,t,v)
+        {
+          if(document.getElementById('bc').checked)
+          {
+            if(changeToRed(x,y))
+            {
+              return gb(x,y,t,v)/2;
+            }
+            return gb(x,y,t,v);
+          }
+          return 0;
+        }
+        function gr(x,y,t,v)
+        {
+          if(document.getElementById('rc').checked)
+          {
+            if(changeToRed(x,y))
+            {
+              return gb(x,y,t,v)/2.5;
+            }
+            if(getPixelFlip(x,y,1))
+            {
+              return gs(y*5,t,v);
+            }
+            else
+            {
+              return 0;
+            }
+          }
+          else
+          {
+            return 0;
+          }
+        }
+        function myTick()
+        {
+          if(document.getElementById('revc').checked)
+          {
+            tick--;
+          }
+          else
+          {
+            tick++;
+          }
+          var c=can.getContext("2d");
+          var d=50;
+          var s=15;
+          for(var i=0; i<d; i++)
+          {
+            for(var j=0; j<d; j++)
+            {
+              if(i==document.getElementById('xx').value
+                && j==document.getElementById('yy').value)
+              {
+                c.fillStyle=`rgb(${gr(i,j,tick,23)},255,255)`;
+              }
+              else
+              {
+                c.fillStyle=`rgb(${gr(i,j,tick,23)},${gg(i,j,tick,19)},${gb2(i,j,tick,11)})`;
+              }
+              c.fillRect(s*i,s*j,s,s);
+            }
+          }
+        }
+        setInterval(myTick,200);
+        
+      </script>
+      <br>
+      <span id="one" style="font-size:6vw">
+        Happy Valentine's
+      </span>
+      <span id="two" style="font-size:6vw">
+        Day, Mayra!  I love
+      </span>
+      <span id="three" style="font-size:6vw">
+         you, my one
+      </span>
+      <span id="four" style="font-size:6vw">
+        and only Wife.
+      </span>
+    
+      <script>
+        let colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
+        let index = 0;
+        let one = document.getElementById("one");
+        let two = document.getElementById("two");
+        let three = document.getElementById("three");
+        let four = document.getElementById("four");
+        setInterval(function() {
+        four.style.color = colors[index];
+        three.style.color = colors[(index + 1)%colors.length];
+        two.style.color = colors[(index + 2)%colors.length];
+        one.style.color = colors[(index + 3)%colors.length];
+        index = (index + 1) % colors.length;
+        }, 1000);
+      </script>
+      <br>
+      <br>
+      <input type="checkbox" id="rc" name="rc" value="RedOn" style="height: 40px; width: 40px;" checked>
+      <label for="rc" style="color: red; font-size: 40px">Red</label><br>
+      <input type="checkbox" id="gc" name="gc" value="GreenOn" style="height: 40px; width: 40px;" checked>
+      <label for="gc" style="color: green; font-size: 40px">Green</label><br>
+      <input type="checkbox" id="bc" name="bc" value="BlueOn" style="height: 40px; width: 40px;" checked>
+      <label for="bc" style="color: blue; font-size: 40px">Blue</label><br>
+      <input type="checkbox" id="revc" name="revc" value="ReverseOn" style="height: 40px; width: 40px;">
+      <label for="revc" style="color: yellow; font-size: 40px">Reverse</label><br>
+      <input type="text" id="mb1" name="mb1" value="1" style="height: 40px; width: 100px;">
+      <label for="mb1" style="color: purple; font-size: 40px">M1</label><br>
+      <input type="text" id="bb1" name="bb1" value="1" style="height: 40px; width: 100px;">
+      <label for="bb1" style="color: purple; font-size: 40px">B1</label><br>
+      <input type="text" id="mb2" name="mb2" value="1" style="height: 40px; width: 100px;">
+      <label for="mb2" style="color: purple; font-size: 40px">M2</label><br>
+      <input type="text" id="bb2" name="bb2" value="1" style="height: 40px; width: 100px;">
+      <label for="bb2" style="color: purple; font-size: 40px">B2</label><br>
+      <input type="text" id="xx" name="xx" value="1" style="height: 40px; width: 100px;">
+      <label for="xx" style="color: purple; font-size: 40px">X</label><br>
+      <input type="text" id="yy" name="yy" value="1" style="height: 40px; width: 100px;">
+      <label for="yy" style="color: purple; font-size: 40px">Y</label><br>
+      <input type="text" id="zz" name="zz" value="1" style="height: 40px; width: 100px;">
+      <label for="zz" style="color: purple; font-size: 40px">Z</label><br>
+   </body>
+</html>
