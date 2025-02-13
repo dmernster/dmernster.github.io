@@ -61,6 +61,14 @@
         
         function changeToRed(x,y)
         {
+          const m1=1;
+          const b1=1;
+          
+          if(y>=m1*x+b1 && y<=m2*x+b2)
+          {
+            return true;
+          }
+          
           let k=13;
           if(x+y<k || 49-x+y<k || x+49-y<k || 98-x-y<k)
           {
