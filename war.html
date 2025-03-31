@@ -1,1 +1,33 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Boxes with Gaps</title>
+    <style>
+        .container {
+            display: flex;
+            align-items: center;
+        }
+        .textbox {
+            width: 2ch; /* Width for two characters */
+            text-align: center;
+            font-size: 16px;
+            padding: 5px;
+        }
+        .gap-large {
+            margin-right: 50px; /* Large gap */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <input type="text" class="textbox gap-large" maxlength="2">
+        <input type="text" class="textbox">
+        <input type="text" class="textbox gap-large" maxlength="2">
+        <input type="text" class="textbox">
+    </div>
+
+</body>
+</html>
