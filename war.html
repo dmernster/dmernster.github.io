@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<!-- saved from url=(0036)https://dmernster.github.io/war.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Boxes with Gaps</title>
+    <title>War</title>
     <style>
         .container {
             display: flex;
@@ -18,16 +18,35 @@
         .gap-large {
             margin-right: 50px; /* Large gap */
         }
+		.indent {
+            margin-left: 81px;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <input type="text" class="textbox gap-large" maxlength="2">
-        <input type="text" class="textbox">
-        <input type="text" class="textbox gap-large" maxlength="2">
-        <input type="text" class="textbox">
+        <input type="text" class="textbox gap-large" maxlength="2" id="p1Deck">
+        <input type="text" class="textbox" id="p1Card">
+        <input type="text" class="textbox gap-large" maxlength="2" id="p2Card">
+        <input type="text" class="textbox" id="p2Deck">
     </div>
-
-</body>
-</html>
+	<br>
+	<div class="container">
+        <input type="text" class="textbox gap-large" maxlength="2" id="p1Pile">
+        <input type="text" class="textbox" id="p1War1">
+        <input type="text" class="textbox gap-large" maxlength="2" id="p1War2">
+        <input type="text" class="textbox" id="p2Pile">
+    </div>
+	<br>
+	<div class="container">
+        <input type="text" class="textbox indent" id="p1War2">
+        <input type="text" class="textbox" id="p2War2">
+    </div>
+	
+	<script>
+		document.getElementById('p1Deck').value = 32;
+		document.getElementById('p1Card').value = "Ad";
+	</script>
+	
+</body></html>
