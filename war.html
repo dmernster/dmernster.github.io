@@ -66,6 +66,13 @@
         <input type="text" class="textbox indent" id="p1War2">
         <input type="text" class="textbox" id="p2War2">
     </div>
+    <br>
+    <div class="container" style="align-items: center; gap: 10px;">
+        <label for="speedSlider" style="color: #00aaff; white-space: nowrap;">Turn speed:</label>
+        <input id="speedSlider" type="range" min="50" max="1000" step="50" value="1000">
+        <span id="speedLabel" style="min-width: 3ch; text-align: center; display: inline-block; color: #00aaff;">1000</span>
+        <span style="color: #00aaff;">ms</span>
+    </div>
 	
 	<script>
         var suits = ["s", "d", "c", "h"];
@@ -86,6 +93,28 @@
         var p2Top = null;
         var p2Middle = null;
         var p2Bottom = null;
+
+        const p1Card = document.getElementById("p1Card");
+        const p2Card = document.getElementById("p2Card");
+
+        let turnInterval = 1000;
+        let turnTimer = null;
+
+        function setTurnSpeed(ms)
+        {
+            turnInterval = ms;
+            document.getElementById("speedLabel").textContent = ms;
+            if (turnTimer !== null)
+            {
+                clearInterval(turnTimer);
+            }
+            turnTimer = setInterval(turn, turnInterval);
+        }
+
+        document.getElementById("speedSlider").addEventListener("input", function(e)
+        {
+            setTurnSpeed(Number(e.target.value));
+        });
 
         Array.prototype.last = function()
         {
@@ -207,6 +236,8 @@
 
             if(winner == 1)
             {
+                p1Card.style.backgroundColor = "#382b59";
+                p2Card.style.backgroundColor = "#002b59";
                 while(p1ActiveCard.length > 0)
                 {
                     p1TrickPile.push(p1ActiveCard.pop());
@@ -218,6 +249,8 @@
             }
             else if(winner == 2)
             {
+                p2Card.style.backgroundColor = "#382b59";
+                p1Card.style.backgroundColor = "#002b59";
                 while(p1ActiveCard.length > 0)
                 {
                     p2TrickPile.push(p1ActiveCard.pop());
@@ -229,6 +262,8 @@
             }
             else if(winner == 0)
             {
+                p1Card.style.backgroundColor = "#002b59";
+                p2Card.style.backgroundColor = "#002b59";
                 state++;
             }
             document.getElementById('p1Card').value = cardToString(p1Top);
@@ -253,15 +288,24 @@
         }
 
         let startingDeck = getDeck();
-        shuffle(startingDeck);
-
+        
         while(startingDeck.length > 0)
         {
-            p1Deck.push(startingDeck.pop());
-            p2Deck.push(startingDeck.pop());
+            let suit = startingDeck.last().Suit
+            if(suit == "d" || suit == "h")
+            {
+                p1Deck.push(startingDeck.pop());
+            }
+            else
+            {
+                p2Deck.push(startingDeck.pop());
+            }
         }
 
-        setInterval(turn, 1000);
+        shuffle(p1Deck);
+        shuffle(p2Deck);
+
+        setTurnSpeed(turnInterval);
 	</script>
 	
 </body></html>
