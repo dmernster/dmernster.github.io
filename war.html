@@ -10,7 +10,7 @@
             align-items: center;
         }
         .textbox {
-            width: 2ch; /* Width for two characters */
+            width: 3ch; /* Width for two characters */
             text-align: center;
             font-size: 16px;
             padding: 5px;
@@ -19,7 +19,7 @@
             margin-right: 50px; /* Large gap */
         }
 		.indent {
-            margin-left: 81px;
+            margin-left: 90px;
         }
     </style>
 </head>
@@ -35,7 +35,7 @@
 	<div class="container">
         <input type="text" class="textbox gap-large" maxlength="2" id="p1Pile">
         <input type="text" class="textbox" id="p1War1">
-        <input type="text" class="textbox gap-large" maxlength="2" id="p1War2">
+        <input type="text" class="textbox gap-large" maxlength="2" id="p2War1">
         <input type="text" class="textbox" id="p2Pile">
     </div>
 	<br>
@@ -45,8 +45,200 @@
     </div>
 	
 	<script>
-		document.getElementById('p1Deck').value = 32;
-		document.getElementById('p1Card').value = "Ad";
+        var suits = ["s", "d", "c", "h"];
+        var values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+        var powers = [14,2,3,4,5,6,7,8,9,10,11,12,13];
+        var specials = [1,1,0,0,0,0,0,0,0,0,0,0,0];
+
+        var p1Deck = new Array();
+        var p2Deck = new Array();
+        var p1TrickPile = new Array();
+        var p2TrickPile = new Array();
+        var p1ActiveCard = new Array();;
+        var p2ActiveCard = new Array();;
+        var state = 0;
+        var p1Top = null;
+        var p1Middle = null;
+        var p1Bottom = null;
+        var p2Top = null;
+        var p2Middle = null;
+        var p2Bottom = null;
+
+        Array.prototype.last = function()
+        {
+            return this[this.length - 1];
+        }
+
+        function getDeck()
+        {
+            let deck = new Array();
+
+            for(let i = 0; i < suits.length; i++)
+            {
+                for(let x = 0; x < values.length; x++)
+                {
+                    let card = {Value: values[x], Suit: suits[i], Power: powers[x], Special: specials[x]};
+                    deck.push(card);
+                }
+            }
+
+            return deck;
+        }
+
+        function shuffle(deck)
+        {
+            // for 1000 turns
+            // switch the values of two random cards
+            for (let i = 0; i < 1000; i++)
+            {
+                let location1 = Math.floor((Math.random() * deck.length));
+                let location2 = Math.floor((Math.random() * deck.length));
+                let tmp = deck[location1];
+
+                deck[location1] = deck[location2];
+                deck[location2] = tmp;
+            }
+        }
+
+        function cardToString(card)
+        {
+            if(card == null)
+            {
+                return "_";
+            }
+            return card.Value + card.Suit;
+        }
+
+        function compare(card1, card2)
+        {
+            let c1 = card1.Power;
+            let c2 = card2.Power;
+            if(card1.Special == 1 && card2.Special == 1)
+            {
+                c1 = card2.Power;
+                c2 = card1.Power;
+            }
+            if(c1 > c2)
+            {
+                return 1;
+            }
+            else if(c2 > c1)
+            {
+                return 2;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        function turn()
+        {
+            if (!(p1Deck.length + p1TrickPile.length > 0 && p2Deck.length + p2TrickPile.length > 0))
+                return;
+
+            if(p1Deck.length == 0)
+            {
+                shuffle(p1TrickPile);
+                while(p1TrickPile.length > 0)
+                {
+                    p1Deck.push(p1TrickPile.pop());
+                }
+            }
+
+            if(p2Deck.length == 0)
+            {
+                shuffle(p2TrickPile);
+                while(p2TrickPile.length > 0)
+                {
+                    p2Deck.push(p2TrickPile.pop());
+                }
+            }
+
+            let winner = 0;
+            if(state == 0 || state == 3)
+            {
+                state = 0;
+                p1ActiveCard.push(p1Deck.pop());
+                p2ActiveCard.push(p2Deck.pop());
+                p1Top = p1ActiveCard.last();
+                p2Top = p2ActiveCard.last();
+                winner = compare(p1ActiveCard.last(), p2ActiveCard.last());
+            }
+            else if(state == 1)
+            {
+                p1ActiveCard.push(p1Deck.pop());
+                p2ActiveCard.push(p2Deck.pop());
+                p1Middle = p1ActiveCard.last();
+                p2Middle = p2ActiveCard.last();
+                p1Bottom = null;
+                p2Bottom = null;
+            }
+            else if(state == 2)
+            {
+                p1ActiveCard.push(p1Deck.pop());
+                p2ActiveCard.push(p2Deck.pop());
+                p1Bottom = p1ActiveCard.last();
+                p2Bottom = p2ActiveCard.last();
+            }
+
+            if(winner == 1)
+            {
+                while(p1ActiveCard.length > 0)
+                {
+                    p1TrickPile.push(p1ActiveCard.pop());
+                }
+                while(p2ActiveCard.length > 0)
+                {
+                    p1TrickPile.push(p2ActiveCard.pop());
+                }
+            }
+            else if(winner == 2)
+            {
+                while(p1ActiveCard.length > 0)
+                {
+                    p2TrickPile.push(p1ActiveCard.pop());
+                }
+                while(p2ActiveCard.length > 0)
+                {
+                    p2TrickPile.push(p2ActiveCard.pop());
+                }
+            }
+            else if(winner == 0)
+            {
+                state++;
+            }
+            document.getElementById('p1Card').value = cardToString(p1Top);
+            document.getElementById('p1War1').value = cardToString(p1Middle);
+            document.getElementById('p1War2').value = cardToString(p1Bottom);
+            document.getElementById('p1Deck').value = p1Deck.length;
+            document.getElementById('p1Pile').value = p1TrickPile.length;
+            document.getElementById('p2Card').value = cardToString(p2Top);
+            document.getElementById('p2War1').value = cardToString(p2Middle);
+            document.getElementById('p2War2').value = cardToString(p2Bottom);
+            document.getElementById('p2Deck').value = p2Deck.length;
+            document.getElementById('p2Pile').value = p2TrickPile.length;
+            if(state == 0)
+            {
+                p1Top = null;
+                p1Middle = null;
+                p1Bottom = null;
+                p2Top = null;
+                p2Middle = null;
+                p2Bottom = null;
+            }
+        }
+
+        let startingDeck = getDeck();
+        shuffle(startingDeck);
+
+        while(startingDeck.length > 0)
+        {
+            p1Deck.push(startingDeck.pop());
+            p2Deck.push(startingDeck.pop());
+        }
+
+        setInterval(turn, 1000);
 	</script>
 	
 </body></html>
