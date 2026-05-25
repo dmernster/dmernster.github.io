@@ -5,20 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>War</title>
     <style>
+        body {
+            background-color: #000; /* black page background */
+            color: #00aaff; /* blue default text color */
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+
         .container {
             display: flex;
             align-items: center;
         }
+
         .textbox {
             width: 3ch; /* Width for two characters */
             text-align: center;
             font-size: 16px;
             padding: 5px;
+            background-color: #002b59; /* dark blue box background */
+            color: #00aaff; /* bright blue text inside boxes */
+            border: 1px solid #0066aa; /* blue border */
+            border-radius: 3px;
         }
+
+        .textbox::placeholder {
+            color: #66d4ff; /* lighter blue for placeholders */
+            opacity: 1;
+        }
+
+        .textbox:focus {
+            outline: 2px solid #00aaff;
+            box-shadow: 0 0 6px rgba(0,170,255,0.15);
+        }
+
         .gap-large {
             margin-right: 50px; /* Large gap */
         }
-		.indent {
+
+        .indent {
             margin-left: 90px;
         }
     </style>
