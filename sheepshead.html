@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Text Boxes with Buttons</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .diamond-section {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 10px;
+            place-items: center;
+        }
+
+        .textbox {
+            width: 100px;
+            height: 40px;
+            padding: 8px;
+            border: 2px solid #333;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .textbox1 {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .textbox2 {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .textbox3 {
+            grid-column: 3;
+            grid-row: 2;
+        }
+
+        .textbox4 {
+            grid-column: 2;
+            grid-row: 3;
+        }
+
+        .button-section {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .btn:active {
+            background-color: #004085;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="diamond-section">
+            <input type="text" class="textbox textbox1" placeholder="Top" id="topBox">
+            <input type="text" class="textbox textbox2" placeholder="Left" id="leftBox">
+            <input type="text" class="textbox textbox3" placeholder="Right" id="rightBox">
+            <input type="text" class="textbox textbox4" placeholder="Bottom" id="bottomBox">
+        </div>
+
+        <div class="button-section">
+            <button class="btn" id="btn1">Button 1</button>
+            <button class="btn" id="btn2">Button 2</button>
+            <button class="btn" id="btn3">Button 3</button>
+            <button class="btn" id="btn4">Button 4</button>
+            <button class="btn" id="btn5">Button 5</button>
+            <button class="btn" id="btn6">Button 6</button>
+            <button class="btn" id="btn7">Button 7</button>
+            <button class="btn" id="btn8">Button 8</button>
+        </div>
+    </div>
+
+    <script>
+        function handleButton1() {
+            console.log('Button 1 clicked');
+        }
+
+        function handleButton2() {
+            console.log('Button 2 clicked');
+        }
+
+        function handleButton3() {
+            console.log('Button 3 clicked');
+        }
+
+        function handleButton4() {
+            console.log('Button 4 clicked');
+        }
+
+        function handleButton5() {
+            console.log('Button 5 clicked');
+        }
+
+        function handleButton6() {
+            console.log('Button 6 clicked');
+        }
+
+        function handleButton7() {
+            console.log('Button 7 clicked');
+        }
+
+        function handleButton8() {
+            console.log('Button 8 clicked');
+        }
+
+        // Add event listeners to buttons
+        document.getElementById('btn1').addEventListener('click', handleButton1);
+        document.getElementById('btn2').addEventListener('click', handleButton2);
+        document.getElementById('btn3').addEventListener('click', handleButton3);
+        document.getElementById('btn4').addEventListener('click', handleButton4);
+        document.getElementById('btn5').addEventListener('click', handleButton5);
+        document.getElementById('btn6').addEventListener('click', handleButton6);
+        document.getElementById('btn7').addEventListener('click', handleButton7);
+        document.getElementById('btn8').addEventListener('click', handleButton8);
+    </script>
+</body>
+</html>
