@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addition Practice</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eaf6ff;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2563a6;
+            font-size: 36px;
+        }
+
+        .container {
+            background-color: white;
+            max-width: 450px;
+            margin: 20px auto;
+            padding: 25px 15px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px #0002;
+        }
+
+        label {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        select {
+            display: block;
+            margin: 12px auto 25px;
+            font-size: 24px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #8bbce8;
+        }
+
+        #problem {
+            font-size: 54px;
+            font-weight: bold;
+            margin: 30px 0;
+            color: #333;
+        }
+
+        #answer {
+            color: #159447;
+        }
+
+        button {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            background-color: #2589e8;
+            border: none;
+            border-radius: 14px;
+            padding: 16px 25px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #126bc0;
+        }
+
+        button:active {
+            transform: scale(0.97);
+        }
+
+        .hint {
+            color: #666;
+            font-size: 17px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>⭐ Addition Practice ⭐</h1>
+
+    <div class="container">
+
+        <label for="selectedNumber">
+            Practice with which number?
+        </label>
+
+        <select id="selectedNumber">
+            <option value="">Random numbers</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+        </select>
+
+        <div id="problem">? + ? = ?</div>
+
+        <button id="actionButton" onclick="handleClick()">
+            Show Answer
+        </button>
+
+        <p class="hint">You can do it! 🌟</p>
+
+    </div>
+
+    <script>
+        let firstNumber;
+        let secondNumber;
+        let showingAnswer = false;
+
+        function randomDigit() {
+            return Math.floor(Math.random() * 10);
+        }
+
+        function newProblem() {
+            const selected =
+                document.getElementById("selectedNumber").value;
+
+            if (selected === "") {
+                firstNumber = randomDigit();
+                secondNumber = randomDigit();
+            } else {
+                firstNumber = Number(selected);
+                secondNumber = randomDigit();
+            }
+
+            showingAnswer = false;
+
+            document.getElementById("problem").innerHTML =
+                `${firstNumber} + ${secondNumber} = <span id="answer">?</span>`;
+
+            document.getElementById("actionButton").textContent =
+                "Show Answer";
+        }
+
+        function handleClick() {
+            if (!showingAnswer) {
+                document.getElementById("answer").textContent =
+                    firstNumber + secondNumber;
+
+                showingAnswer = true;
+
+                document.getElementById("actionButton").textContent =
+                    "Next Problem";
+            } else {
+                newProblem();
+            }
+        }
+
+        // Start with a random addition problem.
+        newProblem();
+    </script>
+
+</body>
+</html>
