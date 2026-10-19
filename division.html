@@ -104,7 +104,7 @@
             <option value="9">9</option>
         </select>
 
-        <div id="problem">? - ? = ?</div>
+        <div id="problem">? / ? = ?</div>
 
         <button id="actionButton" onclick="handleClick()">
             Show Answer
@@ -138,7 +138,7 @@
             showingAnswer = false;
 
             document.getElementById("problem").innerHTML =
-                `${firstNumber+secondNumber} - ${firstNumber} = <span id="answer">?</span>`;
+                `${firstNumber*secondNumber} / ${firstNumber} = <span id="answer">?</span>`;
 
             document.getElementById("actionButton").textContent =
                 "Show Answer";
